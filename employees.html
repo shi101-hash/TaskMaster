@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Employee Management System</h1>
+        <nav>
+            <a href="/employees/add">Add Employee</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Employee List</h2>
+        <form method="get" action="/employees/search">
+            <input type="text" name="query" placeholder="Search by Name or Position">
+            <button type="submit">Search</button>
+        </form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.name}"></td>
+                    <td th:text="${employee.position}"></td>
+                    <td th:text="${employee.salary}"></td>
+                    <td>
+                        <a th:href="@{'/employees/edit/' + ${employee.id}}">Edit</a>
+                        <a th:href="@{'/employees/delete/' + ${employee.id}}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Employee Management</p>
+    </footer>
+</body>
+</html>

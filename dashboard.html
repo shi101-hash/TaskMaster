@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Employee Dashboard</h1>
+        <nav>
+            <a href="/employees">Employee List</a>
+            <a href="/employees/add">Add Employee</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Statistics</h2>
+            <p>Total Employees: <span th:text="${totalEmployees}"></span></p>
+            <p>Average Salary: <span th:text="${averageSalary}"></span></p>
+        </section>
+
+        <section>
+            <h2>Employees by Position</h2>
+            <ul>
+                <li th:each="entry : ${employeesByPosition}">
+                    <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Employee Management</p>
+    </footer>
+</body>
+</html>
